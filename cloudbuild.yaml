@@ -5,5 +5,5 @@ steps:
   args: ['push', 'us-central1-docker.pkg.dev/responsive-sun-435918-p6/akashdeep-100946308/akashdeep-image:$COMMIT_SHA']
 
 options:
-  logging: GCS_ONLY
+  logging: CLOUD_LOGGING_ONLY
 
