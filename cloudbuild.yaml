@@ -1,0 +1,10 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/responsive-sun-435918-p6/akashdeep-100946308/akashdeep-image:$COMMIT_SHA', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/responsive-sun-435918-p6/akashdeep-1009463082/akashdeep-image:$COMMIT_SHA']
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'gcloud'
+  args: ['run', 'deploy', 'akashdeep-100946308-service', '--image', 'us-central1-docker.pkg.dev/responsive-sun-435918-p6/akashdeep-100946308/akashdeep-image:$COMMIT_SHA', '--region', 'us-central1']
+options:
+  logging: REGIONAL_USER_OWNED_BUCKET
